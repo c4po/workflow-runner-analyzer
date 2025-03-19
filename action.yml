@@ -1,0 +1,9 @@
+name: 'Workflow Runner Analyzer'
+description: 'Analyzes GitHub workflow files and extracts unique runner tags'
+author: 'C4po'
+runs:
+  using: 'node20'
+  main: 'index.js'
+outputs:
+  runner-tags:
+    description: 'Unique list of runner tags found in workflows'
