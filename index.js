@@ -1,8 +1,8 @@
-const core = require('@actions/core');
-const fs = require('fs');
+const fs = require('fs/promises');
 const path = require('path');
 const yaml = require('js-yaml');
 const { glob } = require('glob');
+const core = require('@actions/core');
 
 /**
  * Extracts runs-on values from a workflow object
@@ -53,7 +53,7 @@ async function run() {
         // Process each workflow file
         for (const file of workflowFiles) {
             try {
-                const fileContent = fs.readFileSync(file, 'utf8');
+                const fileContent = await fs.readFile(file, 'utf8');
                 const workflow = yaml.load(fileContent);
 
                 extractRunsOn(workflow, allRunnerTags);
@@ -102,3 +102,9 @@ async function run() {
 }
 
 run();
+
+// Export for testing
+module.exports = {
+    extractRunsOn,
+    run
+};

@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "GitHub Action to analyze workflow runner configurations",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "ncc build index.js -o dist",
+    "test": "jest",
+    "lint": "eslint . --ignore-pattern 'dist/*'"
   },
   "keywords": [
     "github",
@@ -19,5 +22,10 @@
     "@actions/core": "^1.10.1",
     "glob": "^11.0.1",
     "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.3",
+    "eslint": "^9.22.0",
+    "jest": "^29.7.0"
   }
 }
