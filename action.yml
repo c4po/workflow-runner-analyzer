@@ -1,6 +1,11 @@
 name: 'Workflow Runner Analyzer'
 description: 'Analyzes GitHub workflow files and extracts unique runner tags'
 author: 'C4po'
+inputs:
+  allowed-runners:
+    description: 'List of allowed runner tags (space-separated string)'
+    required: false
+    default: '*'
 runs:
   using: 'node20'
   main: 'index.js'
